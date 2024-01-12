@@ -1,0 +1,48 @@
+
+
+.MainDashboardContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+}
+
+#FiltrosContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#FiltrosTitle{
+    font-size: 28px;
+    font-family: 'Salsa', cursive;
+}
+
+#ImageDash{
+    margin: 40px;
+    width: 300px;
+}
+
+.ButtonContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.botonFiltro{
+    width: 120px;
+}
+
+
+
+/* Consulta de medios para pantallas más grandes (computadoras) */
+@media screen and (min-width: 768px) {
+    .MainDashboardContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,52 @@
+
+
+.HeaderContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin: 0px;
+    width: 100%;
+    height: 100px;
+    background: rgb(39,91,102);
+    background: linear-gradient(90deg, rgb(36, 45, 73) 0%, rgb(24, 24, 66) 46%, rgba(2,0,36,1) 86%);
+}
+
+.HeaderTitle2{
+    margin: 0%;
+    font-family: 'Lemon', serif;
+    font-weight: bolder;
+    color: rgb(227,210,59);
+    color: linear-gradient(90deg, rgba(255,255,71,1) 21%, rgba(41,232,39,1) 55%, rgba(207,24,237,1) 85%);
+}
+
+.HeaderLogo{
+    width: 100px;
+    position: absolute;
+    right: 20px;
+}
+
+.HeaderTitle{
+    margin: 0%;
+    font-size: 60px;
+    font-family: 'Lemon', serif;
+    background: linear-gradient(to right,#fc0176, #c2ff05, #ff9e18, #cf18ed );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(9, 9, 9);
+}
+
+.HeaderSubtitle{
+    position: absolute;
+    right: 24px;
+    bottom: 4px;
+    font-size: 20px;
+    margin: 0%;
+    font-family: 'Lemon', serif;
+    background: linear-gradient(to right,#09fc01, #c2ff05, #ff0534 );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+}
