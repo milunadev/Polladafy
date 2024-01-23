@@ -4,9 +4,10 @@
 @import 'tailwindcss/utilities';
 
 .LoginMainContainer{
-    height: 100%;
+    height: 400px;
     display: flex;
     flex-direction: column;
+   
 }
 
 #LoginTitle{
@@ -15,11 +16,13 @@
 }
 
 .LoginMainImageContainer{
+  
     display: flex;
     justify-content: center;
 }
 #LoginMainImage{
-    width: 400px;
+    
+    width: 250px;
     margin: 2px;
 }
 
@@ -34,4 +37,15 @@
     border-radius: 10px;
     cursor: pointer;
     font-family: 'Salsa', cursive;
+}
+
+.spanLogin{
+    width: 100%;
+    padding: 20px 0px;
+    text-align: center;
+    font-family: 'Salsa';
+    font-size: large;
+}
+.spanLogin li{
+    font-size: small;
 }

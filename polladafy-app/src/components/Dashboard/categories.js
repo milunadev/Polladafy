@@ -2,22 +2,36 @@ import React, { useContext } from 'react';
 import {AppContext} from '../../context/AppContext';
 
 const FiltroCategorias = () => {
-    const { categoriaFiltro, setCategoriaFiltro } = useContext(AppContext);
-    
-    //Funciones para manejar los botones de Categoria
+    const { categoriaFiltro, setCategoriaFiltro, setUrlImage } = useContext(AppContext);
+
     const handleCategoria = (categoria) => {
-        return () => setCategoriaFiltro(categoria);
+        return () => {
+            if (categoriaFiltro !== categoria) {
+                setUrlImage(null);
+            }
+            setCategoriaFiltro(categoria);
+        };
     };
 
-    return(
+    return (
         <>
-            <h4>CATEGORIAS</h4>
+            <h4>CATEGORÍAS</h4>
             <div className='ButtonContainer'>
-                <button className='botonFiltro' onClick={handleCategoria('artist')}>Artista</button>
-                <button className='botonFiltro' onClick={handleCategoria('canciones')}>Canciones</button>
-                <button className='botonFiltro' onClick={handleCategoria('genero')}>Genero</button>
+                <button 
+                    className={`botonFiltro ${categoriaFiltro === 'artists' ? 'botonFiltroSeleccionado' : ''}`} 
+                    onClick={handleCategoria('artists')}
+                >
+                    Artista
+                </button>
+                <button 
+                    className={`botonFiltro ${categoriaFiltro === 'tracks' ? 'botonFiltroSeleccionado' : ''}`} 
+                    onClick={handleCategoria('tracks')}
+                >
+                    Canciones
+                </button>
+                {/* Puedes agregar más botones aquí si es necesario */}
             </div>
-        </>   
+        </>
     );
 }
 

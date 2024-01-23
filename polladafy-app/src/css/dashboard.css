@@ -4,36 +4,95 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     justify-content: center;
+    margin-top: 10px;
 }
+
+.DashboardElementContainer{
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    justify-items: center;
+}
+
+.ImageDashboardContainer{
+    min-height: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 #FiltrosContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: max-content;
+    margin-bottom: 10px;
 }
 
 #FiltrosTitle{
-    font-size: 28px;
-    font-family: 'Salsa', cursive;
+    font-size: 24px;
+    font-family: 'Salsa';
 }
 
 #ImageDash{
-    margin: 40px;
-    width: 300px;
+    margin: 0px;
+    width: 90%;
 }
 
 .ButtonContainer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 8px;
+    
 }
 
 .botonFiltro{
-    width: 120px;
+    padding: 8px;
+    width: auto;
+    height: 40px;
+    background-color: var(--black-main);
+    
+    font-family: 'Salsa';
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
 }
 
+.botonFiltro {
+    /* Estilos por defecto del botón */
+    background-color: #f0f0f0; /* Color de fondo por defecto */
+    color: #000000;
+    /* Color del texto por defecto */
+    /* Otros estilos como padding, border, etc. */
+}
+
+.botonFiltroSeleccionado {
+    /* Estilos del botón cuando está seleccionado */
+    background-color: #000000; /* Color de fondo para seleccionado */
+    color: #81b682; /* Color del texto para seleccionado */
+    /* Otros estilos como padding, border, etc. */
+}
+
+.loading-image {
+    filter: grayscale(100%);
+    animation: revealImage 2s linear infinite;
+
+    width: auto; /* Ajusta al tamaño de tu imagen */
+    height: 150px; /* Ajusta al tamaño de tu imagen */
+}
+
+@keyframes revealImage {
+    0%, 100% {
+        filter: grayscale(100%);
+    }
+    50% {
+        filter: grayscale(0%);
+    }
+}
 
 
 /* Consulta de medios para pantallas más grandes (computadoras) */

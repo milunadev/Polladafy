@@ -5,6 +5,7 @@ import '../../css/login.css'
 
 const LoginButton = () => {
   const handleLogin = () => {
+    console.log(localStorage.getItem('sessionToken'));
     fetch('https://fh8qwcz15a.execute-api.us-east-2.amazonaws.com/auth/spotify')
       .then(response => response.json())
       .then(data => {

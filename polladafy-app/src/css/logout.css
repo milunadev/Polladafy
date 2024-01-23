@@ -1,0 +1,19 @@
+.LogoutButton{
+    display: inline;
+    margin: 10px;
+    height: 50px;
+    width: 250px;
+    background-color: var(--green-spotify);
+    color: var(--white-main);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Salsa', cursive;
+}
+
+.logoutContainer{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

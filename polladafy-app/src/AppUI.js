@@ -4,6 +4,8 @@ import {useRoutes} from 'react-router-dom'
 import {LoginView} from './views/LoginView'
 import { DashboardView } from "./views/DashboardView";
 import { Header } from "./components/comunes/header";
+import { LogoutButton } from "./components/Logout/logoutbutton";
+import { Footer } from "./components/comunes/footer";
 
 const AppRoutes = ()=>{
     const routes = useRoutes([
@@ -19,6 +21,7 @@ function AppUI(){
         <>
             <Header/>
             <AppRoutes/>
+            <Footer/>
         </>
         
  

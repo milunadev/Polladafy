@@ -9,12 +9,14 @@ const AppContext = createContext();
 //short_term (approximately last 4 weeks). Default: medium_term
 
 function AppProvider({ children }){
-    const [categoriaFiltro,setCategoriaFiltro] = useState('artista');
+    const [categoriaFiltro,setCategoriaFiltro] = useState('artists');
     const [periodoFiltro,setperiodoFiltro] = useState('medium_term');
+    const [dataSpotify, setDataSpotify] = useState(null);
+    const [urlImage, setUrlImage] = useState(null);
   // Aquí puedes agregar funciones para manejar los datos, como actualizar el estado, hacer llamadas a la API, etc.
 
   return (
-    <AppContext.Provider value={{ categoriaFiltro,setCategoriaFiltro,periodoFiltro,setperiodoFiltro }}>
+    <AppContext.Provider value={{ urlImage, setUrlImage,dataSpotify, setDataSpotify, categoriaFiltro,setCategoriaFiltro, periodoFiltro,setperiodoFiltro}}>
       {children}
     </AppContext.Provider>
   );
