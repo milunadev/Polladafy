@@ -21,7 +21,10 @@ jobs:
           aws-region: 'us-east-2'
       
       - name: Construcción de la aplicacion
-        run: cd polladafy-app && npm run build
+        run: cd polladafy-app && ls
+      
+      - name: Construcción de la aplicacion
+        run: npm run build
       
       - name: Actualizando S3 bucket con build
         run: aws s3 sync build/ s3://www.polladafy.miluna.dev
