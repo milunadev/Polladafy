@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     environment: mainENV
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Recuperar credenciales de AWS
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with: 
           aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
+          aws-region: 'us-east-2'
       
       - name: Construcción de la aplicacion
         run: cd polladafy-app && npm run build
