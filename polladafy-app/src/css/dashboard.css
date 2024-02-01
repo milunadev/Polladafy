@@ -10,15 +10,18 @@
 }
 
 .DashboardElementContainer{
-    width: 100%;
-    min-height: 200px;
+
+    min-height: 180px;
     display: flex;
+    flex-direction: column;
     justify-items: center;
+    justify-content: center;
 }
 
 .ImageDashboardContainer{
-    min-height: 250px;
     width: 100%;
+    min-height: 250px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,8 +43,26 @@
 
 #ImageDash{
     margin: 0px;
-    width: 90%;
+    max-width: 600px;
 }
+
+.downloadboton{
+    text-align: center;
+    
+}
+.downloadboton button{
+    margin-top: 8px;
+    font-family: 'Salsa';
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-decoration-style: solid;
+    text-decoration: underline;
+    text-decoration-color: rgb(226, 43, 202);
+    color: blueviolet;
+    
+}
+
 
 .ButtonContainer{
     display: flex;
@@ -103,5 +124,19 @@
         flex-direction: row;
         gap: 40px;
         justify-content: center;
+    }
+
+    #ImageDash{
+        margin: 0px;
+        min-width: 600px;
+    }
+    .ImageDashboardContainer{
+        min-height: 250px;
+        width: 100%;
+        display: flex;
+       
+    }
+    #FiltrosContainer{
+        min-width: 400px;
     }
 }

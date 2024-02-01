@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
 import { ImageDash } from '../components/Dashboard/imagendash';
 import { LogoutButton } from '../components/Logout/logoutbutton';
+import { DownloadButton } from '../components/Dashboard/downloadbutton';
 
 const DashboardView = () => {
     //CONTEXTO
@@ -34,12 +35,14 @@ const DashboardView = () => {
                         'Content-Type': 'application/json'
                     }
                 });
-
+                
                 if (!response.ok) {
+                    console.log(response)
                     throw new Error('Error al realizar la solicitud');
                 }
 
                 const data = await response.json();
+                console.log(data)
                 return data
                 
             } catch (error) {
@@ -83,6 +86,7 @@ const DashboardView = () => {
             <div className='MainDashboardContainer'>
                 <div className='DashboardElementContainer'>
                     <ImageDash/>
+                    <DownloadButton/>
                     {/* <img id='ImageDash' src='https://portal.andina.pe/EDPfotografia/Thumbnail/2015/01/30/000279770W.jpg'></img> */}
                 </div>
                 <div id='FiltrosContainer'>
