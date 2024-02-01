@@ -30,7 +30,7 @@ jobs:
       
       - name: Actualizando S3 bucket con build
         
-        run: aws s3 sync build/ s3://www.polladafy.miluna.dev
+        run: aws s3 sync polladafy-app/build/ s3://www.polladafy.miluna.dev
       
       - name: Invalidar caché de CloudFront
         run: |
