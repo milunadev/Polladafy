@@ -20,8 +20,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           aws-region: 'us-east-2'
       
-      - name: Construcción de la aplicacion
-        run: cd polladafy-app && ls
+      - name: Instalar dependencias 
+        run: cd polladafy-app && npm install
       
       - name: Construcción de la aplicacion
         run: npm run build
