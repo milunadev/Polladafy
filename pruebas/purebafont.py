@@ -1,6 +1,8 @@
 #Skippy Sharpie Regular
 from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
+import requests
+from io import BytesIO
 
 event = {
     'usuario': 'user1', 
@@ -96,8 +98,13 @@ for i, artist in enumerate(event['lista'][5:10]):
         y2+=font_size+10
     print(i,artist,x2,y2,lenght)
     
-    
-    
+# Cargar la imagen pequeña desde una URL
+url_imagen_pequena = 'https://i.scdn.co/image/ab6761610000517432845b1556f9dbdfe8ee6575'
+respuesta = requests.get(url_imagen_pequena)
+imagen_pequena = Image.open(BytesIO(respuesta.content)).convert("RGBA")  
+posicion = (1700, 100)  # Por ejemplo, (50, 50)    
+image.paste(imagen_pequena, posicion, imagen_pequena)
+
 
 output_path = 'pollada_filled6.png'
 image.save(output_path)

@@ -8,8 +8,10 @@ from datetime import datetime
 s3 = boto3.client('s3')
 
 def lambda_handler(event, context):
+    
     now = datetime.now()
     categoria = event['categoria']
+    periodo = event['periodo']
     print(event)
 
     # Obtener la imagen de fondo desde S3
@@ -22,7 +24,7 @@ def lambda_handler(event, context):
     draw = ImageDraw.Draw(image)
 
     # Rutas a las fuentes
-    font_path = 'font6.otf'
+    font_path = 'font6.ttf'
     font_size = 60
     fontmain_size = 100
     font_date = 60
@@ -42,7 +44,7 @@ def lambda_handler(event, context):
     draw_text(draw, "Huaralino de Comas", (1150, 690), font)
 
     # Dibujar el primer artista
-    draw_text(draw, event['lista'][0], (1100, 980), main_font)
+    draw_text(draw, event['lista'][0], (1000, 980), main_font)
 
 
     max_width_column = 700  # Ajusta según la necesidad
@@ -55,7 +57,6 @@ def lambda_handler(event, context):
         palabras = texto.split()
         lineas = []
         linea_actual = ''
-        print('funcion',y1)
         for palabra in palabras:
             prueba_linea = f'{linea_actual} {palabra}'.strip()
             ancho_linea = draw.textlength(prueba_linea, font=font)
@@ -63,7 +64,6 @@ def lambda_handler(event, context):
                 # Si no excede, sigue construyendo la línea actual
                 linea_actual = prueba_linea
             else:
-                print('excede ',linea_actual)
                 # Si excede, guarda la línea actual y comienza una nueva
                 draw.textlength(linea_actual, font=font)
                 lineas.append(linea_actual)
@@ -75,7 +75,6 @@ def lambda_handler(event, context):
         y1+=font_size
         draw_text(draw, lineas[1], (x1, y1), font)
         y1+=font_size+10
-        print(lineas)    
         return y1     
         
 
@@ -89,9 +88,8 @@ def lambda_handler(event, context):
             
             draw_text(draw, '- '+artist, (x1, y1), font)
             y1+=font_size+10
-        print(i,artist,x1,y1,lenght)
 
-    for i, artist in enumerate(event['lista'][5:10]):
+    for i, artist in enumerate(event['lista'][6:11]):
         lenght = draw.textlength(artist, font=font)
         if lenght > 700:
             ya = divide_texto(y2,x2,artist,font=font,draw=draw)
@@ -99,19 +97,18 @@ def lambda_handler(event, context):
         else:
             draw_text(draw, '- '+artist, (x2, y2), font)
             y2+=font_size+10
-        print(i,artist,x2,y2,lenght)
 
 
     # Guardar la imagen modificada en /tmp
     temp_path = '/tmp/pollada_filled.png'
     image.save(temp_path)
     
-    # Guardar la imagen modificada en /tmp
-    temp_path = f"/tmp/{event['usuario']}_pollada_filled.png"
-    image.save(temp_path)
     
-    
-    #ver la ruta de la imagen modificada o la URL de S3
+    # Opcionalmente, subir la imagen modificada de vuelta a S3
+    new_key = f"{event['usuario']}/img_{periodo}_{categoria}_filled.png"
+    s3.upload_file(temp_path, bucket, new_key)
+    print('Imagen subida a S3')
+    # Devolver la ruta de la imagen modificada o la URL de S3
     return {
         'statusCode': 200,
         'body': {
