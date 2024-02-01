@@ -77,6 +77,10 @@ def lambda_handler(event, context):
     print(categoria, periodo)
     
     
+    redirect_uri = 'https://fh8qwcz15a.execute-api.us-east-2.amazonaws.com/auth/spotify/callback'
+    client_id = 'dae7b95560274253bbea3442604a79a8'  # Asegúrate de que esto es correcto
+    client_secret = 'f851297013ee448b9100f25d0dabaae8'  # Asegúrate de que esto es correcto
+    
     bucket = 'polladafybucket'
     s3_key = f"{username}/img_{periodo}_{categoria}_filled.png"
     

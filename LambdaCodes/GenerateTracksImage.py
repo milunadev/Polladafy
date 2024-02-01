@@ -2,13 +2,14 @@ import json
 import boto3
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
+import requests
 from datetime import datetime
 
 # Inicializar cliente S3
 s3 = boto3.client('s3')
 
 def lambda_handler(event, context):
-    
+    img_url = event['img']
     now = datetime.now()
     categoria = event['categoria']
     periodo = event['periodo']
@@ -45,13 +46,15 @@ def lambda_handler(event, context):
 
     # Dibujar el primer artista
     draw_text(draw, event['lista'][0], (1000, 980), main_font)
-
+    
+    print("Dibujadas las primeras lineas")
 
     max_width_column = 700  # Ajusta según la necesidad
     column_positions = [(500, 1130), (1450, 1130)]  # Ajusta según la necesidad
     column_y = [1200, 1200]  # Posiciones iniciales de y para cada columna
     x1, y1 = column_positions[0]
     x2, y2 = column_positions[1]
+    
 
     def divide_texto(y1,x1,texto, font, draw,max_width_column = 650):
         palabras = texto.split()
@@ -77,7 +80,7 @@ def lambda_handler(event, context):
         y1+=font_size+10
         return y1     
         
-
+    print("Dibujando canciones")
 
     for i, artist in enumerate(event['lista'][1:6]):
         lenght = draw.textlength(artist, font=font)
@@ -97,8 +100,15 @@ def lambda_handler(event, context):
         else:
             draw_text(draw, '- '+artist, (x2, y2), font)
             y2+=font_size+10
-
-
+            
+    #dibujar imagen pequena
+    respuesta = requests.get(img_url)
+    imagen_pequena = Image.open(BytesIO(respuesta.content)).convert("RGBA")  
+    posicion = (1700, 100)    
+    image.paste(imagen_pequena, posicion, imagen_pequena)
+     
+    print("Dibujo terminado")
+    
     # Guardar la imagen modificada en /tmp
     temp_path = '/tmp/pollada_filled.png'
     image.save(temp_path)
