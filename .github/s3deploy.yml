@@ -1,0 +1,33 @@
+name: GitHub Actions S3 deploy Pipeline
+
+on: 
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'LambdaCodes/**'
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    environment: mainENV
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Recuperar credenciales de AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with: 
+          aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+      
+      - name: Construcción de la aplicacion
+        run: cd polladafy-app && npm run build
+      
+      - name: Actualizando S3 bucket con build
+        run: aws s3 sync build/ s3://www.polladafy.miluna.dev
+      
+      - name: Invalidar caché de CloudFront
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{vars.DISTRIBUTION_ID}} --paths "/*"
+        
+
+         

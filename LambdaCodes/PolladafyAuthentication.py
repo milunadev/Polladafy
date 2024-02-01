@@ -1,7 +1,7 @@
 import json
 
 def lambda_handler(event, context):
-    client_id = 'dae7b95560274253bbea3442604a79a8'
+    client_id = ''   ##CLIENT ID OBTENIDO DE SPOTIFY
     redirect_uri = 'https://fh8qwcz15a.execute-api.us-east-2.amazonaws.com/auth/spotify/callback'
     scope = 'user-top-read user-read-recently-played user-read-private'
     
